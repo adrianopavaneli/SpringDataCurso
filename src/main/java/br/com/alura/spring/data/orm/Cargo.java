@@ -30,4 +30,10 @@ public class Cargo {
 		this.descricao = descricao;
 	}
 
+	@Override
+	public String toString() {
+		return "Cargo [id=" + id + ", descricao=" + descricao + "]";
+	}
+	
+
 }
