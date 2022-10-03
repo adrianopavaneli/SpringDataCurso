@@ -17,18 +17,23 @@ import br.com.alura.spring.data.service.RelatoriosService;
 public class SpringDataApplication implements CommandLineRunner {
 
 	private Boolean system = true;
-	private final CrudCargoService cargoService;
-	private final CrudFuncionarioService funcionarioService;
-	private final CrudUnidadeTrabalhoService unidadeTrabalhoService;
-	private final RelatoriosService relatorioService;
 
-	public SpringDataApplication(CrudCargoService cargoService,
+	private final CrudCargoService cargoService;
+
+	private final RelatoriosService relatoriosService;
+	
+	private final CrudFuncionarioService funcionarioService;
+
+	private final CrudUnidadeTrabalhoService unidadeTrabalhoService;
+
+	public SpringDataApplication(CrudCargoService cargoService, 
+			RelatoriosService relatoriosService, 
 			CrudFuncionarioService funcionarioService, 
-			CrudUnidadeTrabalhoService unidadeTrabalhoService, RelatoriosService relatorioService) {
+			CrudUnidadeTrabalhoService unidadeTrabalhoService) {
 		this.cargoService = cargoService;
+		this.relatoriosService = relatoriosService;
 		this.funcionarioService = funcionarioService;
 		this.unidadeTrabalhoService = unidadeTrabalhoService;
-		this.relatorioService = relatorioService;
 	}
 
 	public static void main(String[] args) {
@@ -42,26 +47,26 @@ public class SpringDataApplication implements CommandLineRunner {
 		while (system) {
 			System.out.println("Qual função deseja executar?");
 			System.out.println("0 - Sair");
-			System.out.println("1 - Funcionario");
-			System.out.println("2 - Cargo");
+			System.out.println("1 - Cargo");
+			System.out.println("2 - Funcionario");
 			System.out.println("3 - Unidade");
 			System.out.println("4 - Relatorios");
 			
+
 			Integer function = scanner.nextInt();
 
 			switch (function) {
 				case 1:
-					funcionarioService.inicial(scanner);
+					cargoService.inicial(scanner);
 					break;
 				case 2:
-					
-					cargoService.inicial(scanner);
+					funcionarioService.inicial(scanner);
 					break;
 				case 3:
 					unidadeTrabalhoService.inicial(scanner);
 					break;
 				case 4:
-					relatorioService.inicial(scanner);
+					relatoriosService.inicial(scanner);
 					break;
 				default:
 					System.out.println("Finalizando");
